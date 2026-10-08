@@ -1,82 +1,260 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game Hub</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#080810;color:#fff}
-header{padding:20px 6%;background:#10101c;border-bottom:1px solid #292940;display:flex;align-items:center;gap:25px;flex-wrap:wrap}
-.logo{font-size:25px;font-weight:bold;color:#8b6cff}
-nav{display:flex;gap:20px;flex:1}
-nav a{color:#ccc;text-decoration:none}
-nav a:hover{color:#8b6cff}
-#search{background:#181827;border:1px solid #303047;color:white;padding:11px 15px;border-radius:8px}
-.hero{text-align:center;padding:90px 20px;background:linear-gradient(135deg,#0c0c19,#17132b)}
-.hero h1{font-size:50px;margin-bottom:15px}
-.hero p{color:#aaa;font-size:18px;margin-bottom:25px}
-button{border:0;background:#8b6cff;color:#fff;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:bold}
-button:hover{background:#a08aff}
-main{max-width:1200px;margin:auto}
-section{padding:55px 20px}
-h2{margin-bottom:25px}
-.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.game-card{background:#12121f;border:1px solid #292940;border-radius:14px;padding:20px;transition:.2s}
-.game-card:hover{transform:translateY(-5px);border-color:#8b6cff}
-.game-image{height:150px;background:#1b1b2b;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:65px;margin-bottom:15px}
-.game-card p{color:#999;margin:8px 0 15px}
-.categories{display:flex;gap:10px;flex-wrap:wrap}
-footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222}
-@media(max-width:700px){.hero h1{font-size:38px}#search{width:100%}}
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0b0b12;
+        color: white;
+    }
+
+    header {
+        background: #12121c;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 2px solid #7c3cff;
+    }
+
+    header h1 {
+        margin: 0;
+        color: #9b5cff;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px;
+    }
+
+    .add-game {
+        background: #151522;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 20px rgba(124, 60, 255, 0.2);
+    }
+
+    .add-game h2 {
+        color: #9b5cff;
+        margin-top: 0;
+    }
+
+    input {
+        width: calc(100% - 24px);
+        padding: 12px;
+        margin: 8px 0;
+        background: #0d0d16;
+        color: white;
+        border: 1px solid #444;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 20px;
+        background: #7c3cff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    button:hover {
+        background: #9b5cff;
+    }
+
+    .games {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .game {
+        background: #151522;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid #29293b;
+    }
+
+    .game h3 {
+        color: #b98aff;
+        margin-top: 0;
+    }
+
+    .play {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        background: #7c3cff;
+        padding: 10px 18px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .play:hover {
+        background: #9b5cff;
+    }
+
+    .delete {
+        background: #d33;
+        margin-left: 5px;
+    }
+
+    .delete:hover {
+        background: #f44;
+    }
+
+    .empty {
+        color: #888;
+        text-align: center;
+        grid-column: 1 / -1;
+    }
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">🎮 Game Hub</div>
-<nav><a href="#">Home</a><a href="#games">Games</a><a href="#categories">Categories</a></nav>
-<input id="search" placeholder="Search games..." aria-label="Search games">
+    <h1>🎮 Game Hub</h1>
 </header>
 
-<main>
-<section class="hero">
-<h1>Welcome to Game Hub</h1>
-<p>Play awesome games right in your browser.</p>
-<button id="browse">Browse Games</button>
-</section>
+<div class="container">
 
-<section id="games">
-<h2>🎮 Games</h2>
-<div class="game-grid">
-<div class="game-card" data-name="Snake"><div class="game-image">🐍</div><h3>Snake</h3><p>Classic snake game.</p><button class="play">Play</button></div>
-<div class="game-card" data-name="Space Runner"><div class="game-image">🚀</div><h3>Space Runner</h3><p>Dodge obstacles in space.</p><button class="play">Play</button></div>
-<div class="game-card" data-name="Racing"><div class="game-image">🏎️</div><h3>Racing</h3><p>Race against the clock.</p><button class="play">Play</button></div>
-<div class="game-card" data-name="Puzzle"><div class="game-image">🧩</div><h3>Puzzle</h3><p>Test your brain.</p><button class="play">Play</button></div>
+    <div class="add-game">
+        <h2>➕ Add Your Own Game</h2>
+
+        <input
+            type="text"
+            id="gameName"
+            placeholder="Game Name (example: Subway Surfers)"
+        >
+
+        <input
+            type="url"
+            id="gameLink"
+            placeholder="Game Link (example: https://example.com/game)"
+        >
+
+        <button onclick="addGame()">Add Game</button>
+    </div>
+
+    <h2>🎮 My Games</h2>
+
+    <div class="games" id="gamesList"></div>
+
 </div>
-</section>
-
-<section id="categories">
-<h2>🏷️ Categories</h2>
-<div class="categories"><button>Action</button><button>Racing</button><button>Puzzle</button><button>Arcade</button></div>
-</section>
-</main>
-
-<footer>© 2026 Game Hub</footer>
 
 <script>
-const search=document.getElementById("search");
-const cards=document.querySelectorAll(".game-card");
-search.addEventListener("input",()=>{
- const q=search.value.toLowerCase();
- cards.forEach(card=>card.style.display=card.dataset.name.toLowerCase().includes(q)?"block":"none");
-});
-document.getElementById("browse").addEventListener("click",()=>document.getElementById("games").scrollIntoView({behavior:"smooth"}));
-document.querySelectorAll(".play").forEach(button=>{
- button.addEventListener("click",()=>{
-  const name=button.parentElement.dataset.name;
-  alert(name+" will be added as a playable game next!");
- });
-});
+
+function loadGames() {
+
+    const games = JSON.parse(localStorage.getItem("myGames")) || [];
+
+    const gamesList = document.getElementById("gamesList");
+
+    gamesList.innerHTML = "";
+
+    if (games.length === 0) {
+        gamesList.innerHTML =
+            '<p class="empty">No games added yet. Add your first game above!</p>';
+        return;
+    }
+
+    games.forEach((game, index) => {
+
+        const gameDiv = document.createElement("div");
+
+        gameDiv.className = "game";
+
+        gameDiv.innerHTML = `
+            <h3>🎮 ${escapeHTML(game.name)}</h3>
+
+            <a
+                class="play"
+                href="${game.link}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ▶ Play
+            </a>
+
+            <button class="delete" onclick="deleteGame(${index})">
+                Delete
+            </button>
+        `;
+
+        gamesList.appendChild(gameDiv);
+    });
+}
+
+
+function addGame() {
+
+    const name = document.getElementById("gameName").value.trim();
+    const link = document.getElementById("gameLink").value.trim();
+
+    if (name === "" || link === "") {
+        alert("Please enter both a game name and a game link!");
+        return;
+    }
+
+    try {
+        new URL(link);
+    } catch {
+        alert("Please enter a valid game link, such as https://example.com");
+        return;
+    }
+
+    const games = JSON.parse(localStorage.getItem("myGames")) || [];
+
+    games.push({
+        name: name,
+        link: link
+    });
+
+    localStorage.setItem("myGames", JSON.stringify(games));
+
+    document.getElementById("gameName").value = "";
+    document.getElementById("gameLink").value = "";
+
+    loadGames();
+}
+
+
+function deleteGame(index) {
+
+    const games = JSON.parse(localStorage.getItem("myGames")) || [];
+
+    games.splice(index, 1);
+
+    localStorage.setItem("myGames", JSON.stringify(games));
+
+    loadGames();
+}
+
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+loadGames();
+
 </script>
+
 </body>
 </html>
+```
